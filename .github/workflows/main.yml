@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run.
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  buildWindows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.1
+
+      - uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.2.5
+
+      - name: Install Haxelib
+        run: |
+          haxelib install lime 7.9.0
+          haxelib install openfl 9.1.0
+          haxelib install flixel
+          haxelib --never run lime setup
+          haxelib install flixel-ui
+          haxelib install flixel-addons
+          haxelib install polymod
+          haxelib install hscript
+          haxelib install faxe
+          haxelib install hxcpp-debug-server
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+        shell: cmd
+
+      - name: Setup Lime
+        run: |
+          haxelib run lime setup -alias -y
+          haxelib set lime 7.9.0
+          haxelib set openfl 9.1.0
+          haxelib list
+      - name: Compile
+        run: haxelib run lime build windows -Dnightly
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: windowsBuild
+          path: export/release/windows/bin
