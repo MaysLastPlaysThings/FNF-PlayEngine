@@ -114,7 +114,7 @@
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
-	<haxelib name="hscriptPos"/>
+	<define name="hscriptPos"/>
 	<haxelib name="extension-androidtools" if="android" />
 
 	<!--In case you want to use the ui package-->
