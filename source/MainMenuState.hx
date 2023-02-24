@@ -27,6 +27,8 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+	public static var EngineVer:String = '0.1';
+
 	var menuItems:MainMenuList;
 
 	#if !switch
@@ -63,6 +65,15 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = true;
 		add(bg);
+
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Play Engine v" + EngineVer, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
