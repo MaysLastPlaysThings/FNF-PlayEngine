@@ -730,14 +730,6 @@ class ChartingState extends MusicBeatState
 				FlxG.sound.music.pause();
 				vocals.pause();
 
-				/*var daNum:Int = 0;
-					var daLength:Float = 0;
-					while (daNum <= sec)
-					{
-						daLength += lengthBpmBullshit();
-						daNum++;
-				}*/
-
 				FlxG.sound.music.time = sectionStartTime();
 				vocals.time = FlxG.sound.music.time;
 				updateCurStep();
@@ -917,7 +909,6 @@ class ChartingState extends MusicBeatState
 	{
 		var noteStrum = getStrumTime(dummyArrow.y) + sectionStartTime();
 		var noteData = Math.floor(FlxG.mouse.x / GRID_SIZE);
-		// var noteSus = 0;
 
 		_song.notes[curSection].sectionNotes.push([noteStrum, noteData, 0, false]);
 
@@ -945,13 +936,6 @@ class ChartingState extends MusicBeatState
 	function getYfromStrum(strumTime:Float):Float
 	{
 		return FlxMath.remapToRange(strumTime, 0, 16 * Conductor.stepCrochet, gridBG.y, gridBG.y + gridBG.height);
-	}
-
-	private var daSpacing:Float = 0.3;
-
-	function loadLevel():Void
-	{
-		trace(_song.notes);
 	}
 
 	function getNotes():Array<Dynamic>
