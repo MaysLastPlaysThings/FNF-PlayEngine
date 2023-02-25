@@ -28,7 +28,7 @@ jobs:
           haxelib install flixel-ui
           haxelib install flixel-addons 2.11.0
           haxelib install polymod
-          haxelib git hscript https://github.com/YoshiCrafter29/hscript-improved.git
+          haxelib install hscript
           haxelib install faxe
           haxelib install hxcpp-debug-server
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
