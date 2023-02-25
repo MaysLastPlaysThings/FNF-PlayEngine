@@ -1,4 +1,4 @@
-package display;
+/*package display;
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
 import openfl.Lib;
@@ -78,7 +78,6 @@ class FPS extends TextField
 
 				if (currentCount != cacheCount && visible)
 		{
-		 	var memoryMegas:Float = 0;
 			textColor = 0xFFFFFFFF;
 
 			text = FlxG.save.data.fps ? "FPS: "	+ currentFPS;
@@ -91,4 +90,4 @@ class FPS extends TextField
 			#end
 		}
 	}
-}
+}*/
