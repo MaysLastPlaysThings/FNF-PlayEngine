@@ -28,8 +28,6 @@ class FPS extends TextField
 {
   public var currentFPS(default, null):Int;
 
-	public var memoryTotal:Float;
-
 	@:noCompletion private var cacheCount:Int;
 
 	@:noCompletion private var currentTime:Float;
