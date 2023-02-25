@@ -81,8 +81,7 @@ class FPS extends TextField
 		 	var memoryMegas:Float = 0;
 			textColor = 0xFFFFFFFF;
 
-			text = FlxG.save.data.fps ? "FPS: "
-				+ currentFPS;
+			text = FlxG.save.data.fps ? "FPS: "	+ currentFPS;
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
