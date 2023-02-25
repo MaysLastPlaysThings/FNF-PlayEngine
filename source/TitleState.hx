@@ -6,10 +6,12 @@ import openfl.media.Video;
 import ui.PreferencesMenu;
 import shaderslmfao.BuildingShaders;
 import shaderslmfao.ColorSwap;
-#if desktop
+#if DISCORD_ALLOWED
 import Discord.DiscordClient;
-import sys.thread.Thread;
-#end
+#end  
+#if sys 
+import sys.thread.Thread; 
+#end 
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -114,7 +116,7 @@ class TitleState extends MusicBeatState
 		});
 		#end
 
-		#if desktop
+		#if DISCORD_ALLOWED
 		DiscordClient.initialize();
 		
 		Application.current.onExit.add (function (exitCode) {

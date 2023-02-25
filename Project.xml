@@ -35,8 +35,11 @@
 	
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
-	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
-	
+	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/> 
+
+	<!--Definitions-->
+	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
+
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
 		<library name="shared"   preload="true" />
@@ -101,7 +104,7 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="polymod"/>
-	<haxelib name="discord_rpc" if="desktop"/>
+	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

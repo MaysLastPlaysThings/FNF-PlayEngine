@@ -1,6 +1,6 @@
 package;
 
-#if desktop
+#if DISCORD_ALLOWED
 import Discord.DiscordClient;
 #end
 import flixel.FlxG;
@@ -107,7 +107,7 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 70");
 		
-		#if desktop
+		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end

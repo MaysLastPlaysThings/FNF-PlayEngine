@@ -4,7 +4,7 @@ import animate.FlxAnimate;
 import shaderslmfao.BuildingShaders;
 import ui.PreferencesMenu;
 import shaderslmfao.ColorSwap;
-#if desktop
+#if DISCORD_ALLOWED
 import Discord.DiscordClient;
 #end
 import Section.SwagSection;
@@ -146,7 +146,7 @@ class PlayState extends MusicBeatState
 
 	var inCutscene:Bool = false;
 
-	#if desktop
+	#if DISCORD_ALLOWED
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	var iconRPC:String = "";
@@ -1170,7 +1170,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 
-		#if desktop
+		#if DISCORD_ALLOWED
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
 
@@ -1431,7 +1431,7 @@ class PlayState extends MusicBeatState
 				startTimer.active = true;
 			paused = false;
 
-			#if desktop
+			#if DISCORD_ALLOWED
 			if (startTimer.finished)
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength - Conductor.songPosition);
@@ -1446,7 +1446,7 @@ class PlayState extends MusicBeatState
 		super.closeSubState();
 	}
 
-	#if desktop
+	#if DISCORD_ALLOWED
 	override public function onFocus():Void
 	{
 		if (health > 0 && !paused)
@@ -1584,7 +1584,7 @@ class PlayState extends MusicBeatState
 				pauseMenu.camera = camHUD;
 			}
 		
-			#if desktop
+			#if DISCORD_ALLOWED
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 			#end
 		}
@@ -1593,7 +1593,7 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.switchState(new ChartingState());
 
-			#if desktop
+			#if DISCORD_ALLOWED
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 		}
@@ -1717,7 +1717,7 @@ class PlayState extends MusicBeatState
 	
 				// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				
-				#if desktop
+				#if DISCORD_ALLOWED
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 				#end
