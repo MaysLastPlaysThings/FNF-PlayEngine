@@ -1562,7 +1562,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore + ' | Combo Breaks: ' + ' | Health: ' + Math.round(health * 50) + '%' + ' | Accuracy: ?'; //lazy to finish it for now 
+		scoreTxt.text = "Score:" + songScore/*+ ' | Combo Breaks: ' + ' | Health: ' + Math.round(health * 50) + '%' + ' | Accuracy: ?'*/; //lazy to finish it for now 
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
