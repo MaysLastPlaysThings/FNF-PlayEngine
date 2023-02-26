@@ -151,6 +151,6 @@
 	<icon path="art/iconOG.png" />
 
 	<!--The Newgrounds version of FNF was built with 'ng' defined, and so will the port!-->
-	<!--<haxedef name="ng" />-->
+	<haxedef name="ng" />
 	
 </project>
