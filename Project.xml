@@ -41,7 +41,7 @@
 	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
   <define name="hscriptPos"/>
 	<define name="HSCRIPT_ALLOWED" if="desktop||android"/>
-	<define name="LUA_ALLOWED" if="desktop||android"/>
+	<define name="LUA_ALLOWED" if="desktop||android" unless="nolua"/>
 
    <!--Preload All Thing-->
 	<section if="PRELOAD_ALL">
