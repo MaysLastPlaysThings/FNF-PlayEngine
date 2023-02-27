@@ -868,7 +868,12 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
+                #if !extension-videoview
 		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
+                #else
+                VideoView.playVideo(SUtil.getPath() + 'assets/videos/ughCutscene.mp4');
+		VideoView.onCompletion = function()
+                #end
 		{
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -886,8 +891,13 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
+		#if !extension-videoview
 		new FlxVideo('videos/gunsCutscene.mp4').finishCallback = function()
-		{
+                #else
+                VideoView.playVideo(SUtil.getPath() + 'assets/videos/gunsCutscene.mp4');
+		VideoView.onCompletion = function()
+                #end
+                {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
@@ -901,8 +911,13 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
+		#if !extension-videoview
 		new FlxVideo('videos/stressCutscene.mp4').finishCallback = function()
-		{
+                #else
+                VideoView.playVideo(SUtil.getPath() + 'assets/videos/stressCutscene.mp4');
+		VideoView.onCompletion = function()
+                #end
+                {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
