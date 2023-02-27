@@ -15,6 +15,7 @@ import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 import flash.system.System;
+import lime.system.System as LimeSystem;
 
 /**
  * ...
@@ -35,8 +36,10 @@ class SUtil
 		if (aDir != null && aDir.length > 0)
 			return aDir;
 		else
-			return aDir = Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/';
-		#else
+			return aDir = Tools.getExternalStorageDirectory() + '/Android/media/' + Application.current.meta.get('packageName') + '/';
+                #elseif ios
+                        return aDir = LimeSystem.applicationStorageDirectory;
+                #else
 		return '';
 		#end
 	}
@@ -77,6 +80,11 @@ class SUtil
 					System.exit(0);
 				}
 			}
+                   if (!sys.FileSystem.exists(SUtil.getPath()))
+		   {
+                   Lib.application.window.alert('Uncaught Error :(!', "Please create folder to\n' + SUtil.getPath() + '\nPress Ok to close the app");
+	           System.exit(0);
+		   }
 		}
 		#end
 	}
