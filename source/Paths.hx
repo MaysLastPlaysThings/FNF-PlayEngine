@@ -8,6 +8,7 @@ import openfl.utils.Assets as OpenFlAssets;
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
+  inline public static var VIDEO_EXT = "mp4";
 
 	static var currentLevel:String;
 
@@ -105,9 +106,9 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function video(key:String, ?library:String)
+	inline static public function video(key:String)
 	{
-		return SUtil.getPath() + getPath('videos/$key.mp4', TEXT, library);
+		return SUtil.getPath() + 'assets/videos/$key.$VIDEO_EXT';
 	}
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
