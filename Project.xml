@@ -45,6 +45,7 @@
 	<define name="HSCRIPT_ALLOWED" if="desktop||mobile"/>
 	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
+	<library name="videos"    preload="true" />
    <!--Preload All Thing-->
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
@@ -72,6 +73,7 @@
 		<library name="week7"    preload="false" />
 	</section>
 	
+	<assets path="assets/videos"    library="videos"  exclude="*.mp4" />
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3|*.mp4" unless="web"/>
 	<assets path="assets/shared"   library="shared"   exclude="*.ogg" if="web"/>
