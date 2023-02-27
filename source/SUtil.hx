@@ -26,7 +26,7 @@ using StringTools;
 
 class SUtil
 {
-	#if android
+	#if mobile
 	private static var aDir:String = null; // android dir
 	#end
 
@@ -80,13 +80,13 @@ class SUtil
 					System.exit(0);
 				}
 			}
+                   #end
                    if (!sys.FileSystem.exists(SUtil.getPath()))
 		   {
                    Lib.application.window.alert('Uncaught Error :(!', "Please create folder to\n' + SUtil.getPath() + '\nPress Ok to close the app");
 	           System.exit(0);
 		   }
-		}
-		#end
+	      }
 	}
 
 	public static function gameCrashCheck()
@@ -135,7 +135,6 @@ class SUtil
 		Application.current.window.alert(description, title);
 	}
 
-	#if android
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json', fileData:String = 'you forgot something to add in your code')
 	{
 		if (!FileSystem.exists(SUtil.getPath() + 'saves'))
@@ -156,5 +155,4 @@ class SUtil
 		if (!FileSystem.exists(savePath))
 			File.saveBytes(savePath, OpenFlAssets.getBytes(copyPath));
 	}
-	#end
 } 
