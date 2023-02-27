@@ -41,9 +41,9 @@
 
 	<!--Definitions-->
 	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
-  <define name="hscriptPos"/>
-	<define name="HSCRIPT_ALLOWED" if="desktop||android"/>
-	<define name="LUA_ALLOWED" if="desktop||android" />
+        <define name="hscriptPos"/>
+	<define name="HSCRIPT_ALLOWED" if="desktop||mobile"/>
+	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
    <!--Preload All Thing-->
 	<section if="PRELOAD_ALL">
@@ -104,8 +104,8 @@
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" if="HSCRIPT_ALLOWED"/>
-	<haxelib name="extension-androidtools" if="android" />
-  <haxelib name="extension-videoview" if="android" />
+	<haxelib name="extension-androidtools" if="mobile" />
+        <haxelib name="extension-videoview" if="mobile" />
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
