@@ -43,6 +43,7 @@ class OptionsState extends MusicBeatState
 			setPage(Controls);
 		}
 		currentPage.enabled = false;
+                #if mobile addVirtualPad(LEFT_FULL, A_B); #end
 		super.create();
 	}
 
