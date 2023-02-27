@@ -37,6 +37,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		super();
 
+                #if mobile addVirtualPad(NONE, A); addVirtualPadCamera(); #end
+
 		Conductor.songPosition = 0;
 
 		bf = new Boyfriend(x, y, daBf);
