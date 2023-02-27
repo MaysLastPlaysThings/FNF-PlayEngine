@@ -840,14 +840,12 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'thorns':
 					schoolIntro(doof);
-				#if web
 				case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
 					stressIntro();
-				#end
 				default:
 					startCountdown();
 			}
