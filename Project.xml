@@ -129,8 +129,10 @@
 	<haxedef name="HXCPP_STACK_TRACE"/>
 
 	<section if="android">
+        <!--Audio Recording Fix (mays not want aaa)-->
+	<!--<config:android target-sdk-version="29" if="${lime < 8.1.0}" />-->
 
-                <!--Gradle-->
+        <!--Gradle-->
 	<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
 	</section>
 
