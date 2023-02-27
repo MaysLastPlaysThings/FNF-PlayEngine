@@ -29,6 +29,8 @@ class Main extends Sprite
 
 	public function new()
 	{
+                SUtil.gameCrashCheck();
+
 		super();
 
 		if (stage != null)
@@ -69,11 +71,11 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
+                SUtil.doTheCheck();
+
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
 
-		#if !mobile
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
-		#end
 	}
 }
