@@ -45,9 +45,6 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import openfl.utils.Assets as OpenFlAssets;
-#if android
-import extension.videoview.VideoView;
-#end
 
 using StringTools;
 
@@ -875,12 +872,8 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-                #if (!android || !ios)
+
 		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
-                #elseif android
-                VideoView.playVideo(SUtil.getPath() + 'assets/videos/ughCutscene.mp4');
-		VideoView.onCompletion = function()
-                #end
 		{
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -898,12 +891,8 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-		#if (!android || !ios)
+
 		new FlxVideo('videos/gunsCutscene.mp4').finishCallback = function()
-                #elseif android
-                VideoView.playVideo(SUtil.getPath() + 'assets/videos/gunsCutscene.mp4');
-		VideoView.onCompletion = function()
-                #end
                 {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -918,12 +907,8 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-		#if (!android || !ios)
+
 		new FlxVideo('videos/stressCutscene.mp4').finishCallback = function()
-                #elseif android
-                VideoView.playVideo(SUtil.getPath() + 'assets/videos/stressCutscene.mp4');
-		VideoView.onCompletion = function()
-                #end
                 {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
