@@ -796,6 +796,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
+                #if mobile
+                addMobileControls();
+                #end
+
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -1048,6 +1052,10 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
+                #if mobile
+                mobileControls.visible = true;
+                #end
+
 		inCutscene = false;
 
 		camHUD.visible = true;
@@ -1885,6 +1893,10 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+                #if mobile
+                mobileControls.visible = true;
+                #end
+
 		seenCutscene = false;
 		deathCounter = 0;
 		canPause = false;
