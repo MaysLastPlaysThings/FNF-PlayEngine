@@ -42,6 +42,7 @@ class PreferencesMenu extends Page
 		{
 			camFollow.y = item.y;
 		});
+                #if mobile addVirtualPad(LEFT_FULL, A_B); #end
 	}
 
 	public static function getPref(pref:String)
