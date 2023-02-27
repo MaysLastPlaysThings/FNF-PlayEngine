@@ -107,7 +107,7 @@ class Paths
 
 	inline static public function video(key:String, ?library:String)
 	{
-		return getPath('videos/$key.mp4', TEXT, library);
+		return SUtil.getPath() + getPath('videos/$key.mp4', TEXT, library);
 	}
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
