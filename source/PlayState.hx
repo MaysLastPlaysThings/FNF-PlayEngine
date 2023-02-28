@@ -767,6 +767,7 @@ class PlayState extends MusicBeatState
 
 		#if mobile
 		addMobileControls();
+    mobileControls.visible = false;
 		#end
 
 		startingSong = true;
@@ -1001,14 +1002,13 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-                #if mobile
-                mobileControls.visible = true;
-                #end
 
 		inCutscene = false;
 
 		camHUD.visible = true;
-
+                #if mobile
+                mobileControls.visible = true;
+                #end  
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
@@ -1849,7 +1849,7 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
                 #if mobile
-                mobileControls.visible = true;
+                mobileControls.visible = false;
                 #end
 
 		seenCutscene = false;
