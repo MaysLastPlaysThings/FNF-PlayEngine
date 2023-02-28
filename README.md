@@ -1,5 +1,5 @@
 # FNF Play Engine
-unfinished fnf engine
+unfinished fnf engine, with cool stuff
 
 # Credits
 - [MaysLastPlay](https://github.com/MaysLastPlayGithub) - Main Programmer

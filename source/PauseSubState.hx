@@ -31,6 +31,8 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		super();
 
+                #if mobile addVirtualPad(UP_DOWN, A); addVirtualPadCamera(); #end
+
 		menuItems = pauseOG;
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);

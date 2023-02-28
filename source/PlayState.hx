@@ -793,6 +793,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
+                #if mobile
+                addMobileControls();
+                #end
+
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -840,14 +844,12 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'thorns':
 					schoolIntro(doof);
-				#if web
 				case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
 					stressIntro();
-				#end
 				default:
 					startCountdown();
 			}
@@ -870,7 +872,8 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
+
+		new FlxVideo('music/ughCutscene.mp4').finishCallback = function()
 		{
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -888,8 +891,9 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-		new FlxVideo('videos/gunsCutscene.mp4').finishCallback = function()
-		{
+
+		new FlxVideo('music/gunsCutscene.mp4').finishCallback = function()
+                {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
@@ -903,8 +907,9 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
-		new FlxVideo('videos/stressCutscene.mp4').finishCallback = function()
-		{
+
+		new FlxVideo('music/stressCutscene.mp4').finishCallback = function()
+                {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
@@ -1032,6 +1037,10 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
+                #if mobile
+                mobileControls.visible = true;
+                #end
+
 		inCutscene = false;
 
 		camHUD.visible = true;
@@ -1869,6 +1878,10 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+                #if mobile
+                mobileControls.visible = true;
+                #end
+
 		seenCutscene = false;
 		deathCounter = 0;
 		canPause = false;

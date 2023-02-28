@@ -42,7 +42,7 @@ class PreferencesMenu extends Page
 		{
 			camFollow.y = item.y;
 		});
-	}
+        }
 
 	public static function getPref(pref:String)
 	{
