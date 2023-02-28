@@ -151,7 +151,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		// HARD CODING CUZ IM STUPDI
+		// HARD CODING CUZ IM STUPID
 		if (PlayState.SONG.song.toLowerCase() == 'roses')
 			portraitLeft.visible = false;
 		if (PlayState.SONG.song.toLowerCase() == 'thorns')
@@ -177,6 +177,18 @@ class DialogueBox extends FlxSpriteGroup
 			startDialogue();
 			dialogueStarted = true;
 		}
+
+		#if android
+   var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				justTouched = true;
+			}
+		}
+		#end
 
 		if (FlxG.keys.justPressed.ANY && dialogueEnded)
 		{
@@ -217,7 +229,7 @@ class DialogueBox extends FlxSpriteGroup
 				startDialogue();
 			}
 		}
-		else if (FlxG.keys.justPressed.ANY && dialogueStarted)
+		else if (FlxG.keys.justPressed.ANY #if android || justTouched #end && dialogueStarted)
 		{
 			swagDialogue.skip();
 		}
