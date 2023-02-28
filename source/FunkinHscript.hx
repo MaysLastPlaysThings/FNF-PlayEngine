@@ -7,26 +7,54 @@ import hscript.Interp;
 import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 
 class FunkinHscript implements IFlxDestroyable {
-    var parser:Parser;
+    #if HSCRIPT_ALLOWED
     var interp:Interp;
 
-    public function new(file:String) {
-        parser = new Parser();
+    public function new() {
         interp = new Interp();
+    }
+
+    function runScript(file:String){
+        var parser = new Parser();
+
         try {
-            if (parser != null){
-                final parsedFile = parser.parseString(file);
-                if (interp != null)
-                    interp.execute(parsedFile);
-            }
+            final parsedFile = parser.parseString(file);
+
+            interp.execute(parsedFile);
         }
         catch (e){
-            lime.app.Application.current.window.alert(e.message, 'HScript Error');
+            openfl.Lib.application.window.alert(e.message, "Hscript error");
         }
+    }
+
+    function getFunction(func:String, ?args:Array<Dynamic>){
+        if (interp == null) return;
+
+        if (interp.variables.exists(func)){
+            var daFunc = interp.variables.get(func);
+            var result = null;
+            try {
+                result = (args == null) ? func() : Reflect.callMethod(null, func, args);
+            }
+            catch (e){
+                trace('$e');
+            }
+            return result;
+        }
+        return null;
+    }
+
+    public function setVariable(name:String, value:Dynamic){
+        interp.variables.set(name, value);
+    }
+
+    public function getVariable(name:String){
+        return interp.variables.get(name);
     }
 
     public function destroy(){
         parser = null;
         interp = null;
     }
+    #end
 }
