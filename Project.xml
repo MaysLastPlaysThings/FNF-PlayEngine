@@ -103,13 +103,13 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
-	<haxedev set='webgl' />
+	<haxedev set='webgl' if="web" />
 
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" if="HSCRIPT_ALLOWED"/>
 	<haxelib name="extension-androidtools" if="android" />
-        <haxelib name="hxCodec" if="VIDEOS_ALLOWED" />
+	<haxelib name="hxCodec" if="VIDEOS_ALLOWED" />
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
@@ -127,7 +127,7 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-       	<!--Always enable Null Object Reference check-->
+	<!--Always enable Null Object Reference check-->
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
 	<haxedef name="HXCPP_STACK_TRACE"/>
