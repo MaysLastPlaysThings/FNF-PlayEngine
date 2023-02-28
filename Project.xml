@@ -30,7 +30,7 @@
 
 	<classpath name="source" />
 
-        <assets path="mobile" rename="assets/mobile" if="mobile" />
+	<assets path="mobile" rename="assets/mobile" if="mobile" />
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
@@ -133,10 +133,10 @@
 	<haxedef name="HXCPP_STACK_TRACE"/>
 
 	<section if="android">
-        <!--Audio Recording Fix (mays not want aaa)-->
+	<!--Audio Recording Fix (mays not want aaa)-->
 	<!--<config:android target-sdk-version="29" if="${lime < 8.1.0}" />-->
 
-        <!--Gradle-->
+	<!--Gradle-->
 	<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
 	</section>
 
