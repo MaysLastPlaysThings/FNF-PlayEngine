@@ -178,7 +178,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
-		#if android
+		#if mobile
    var justTouched:Bool = false;
 
 		for (touch in FlxG.touches.list)
@@ -229,7 +229,7 @@ class DialogueBox extends FlxSpriteGroup
 				startDialogue();
 			}
 		}
-		else if (FlxG.keys.justPressed.ANY #if android || justTouched #end && dialogueStarted)
+		else if (FlxG.keys.justPressed.ANY #if mobile || justTouched #end && dialogueStarted)
 		{
 			swagDialogue.skip();
 		}
