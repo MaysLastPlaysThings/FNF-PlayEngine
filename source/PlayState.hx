@@ -873,7 +873,7 @@ class PlayState extends MusicBeatState
 		black.scrollFactor.set();
 		add(black);
 
-		new FlxVideo('music/ughCutscene.mp4').finishCallback = function()
+		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
 		{
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -892,7 +892,7 @@ class PlayState extends MusicBeatState
 		black.scrollFactor.set();
 		add(black);
 
-		new FlxVideo('music/gunsCutscene.mp4').finishCallback = function()
+		new FlxVideo('videos/gunsCutscene.mp4').finishCallback = function()
                 {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -908,7 +908,7 @@ class PlayState extends MusicBeatState
 		black.scrollFactor.set();
 		add(black);
 
-		new FlxVideo('music/stressCutscene.mp4').finishCallback = function()
+		new FlxVideo('videos/stressCutscene.mp4').finishCallback = function()
                 {
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
