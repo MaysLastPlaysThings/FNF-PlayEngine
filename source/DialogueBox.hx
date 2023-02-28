@@ -178,6 +178,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
+
 		#if mobile
    var justTouched:Bool = false;
 
@@ -189,8 +190,7 @@ class DialogueBox extends FlxSpriteGroup
 			}
 		}
 		#end
-
-		if (FlxG.keys.justPressed.ANY && dialogueEnded)
+		if (FlxG.keys.justPressed.ANY #if mobile || justTouched #end && dialogueStarted == true)
 		{
 			remove(dialogue);
 				
