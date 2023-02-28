@@ -35,7 +35,6 @@
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
 	
-	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/> 
 
@@ -110,6 +109,7 @@
 	<haxelib name="hscript" if="HSCRIPT_ALLOWED"/>
 	<haxelib name="extension-androidtools" if="android" />
 	<haxelib name="hxCodec" if="VIDEOS_ALLOWED" />
+	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />

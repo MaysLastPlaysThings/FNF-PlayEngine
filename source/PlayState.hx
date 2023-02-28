@@ -155,19 +155,18 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	public static var instance:PlayState;
+
 	override public function create()
 	{
+		instance = this;
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		var instPath = Paths.inst(SONG.song.toLowerCase());
-		if (OpenFlAssets.exists(instPath, SOUND) || OpenFlAssets.exists(instPath, MUSIC))
-			OpenFlAssets.getSound(instPath, true);
-		var vocalsPath = Paths.voices(SONG.song.toLowerCase());
-		if (OpenFlAssets.exists(vocalsPath, SOUND) || OpenFlAssets.exists(vocalsPath, MUSIC))
-			OpenFlAssets.getSound(vocalsPath, true);
+		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
+		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
 
-		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -261,8 +260,6 @@ class PlayState extends MusicBeatState
 				trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
 				FlxG.sound.list.add(trainSound);
 
-				// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
-
 				var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
 				add(street);
 			case "milf" | 'satin-panties' | 'high':
@@ -290,13 +287,6 @@ class PlayState extends MusicBeatState
 					grpLimoDancers.add(dancer);
 				}
 
-				var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('limo/limoOverlay'));
-				overlayShit.alpha = 0.5;
-				// add(overlayShit);
-				// var shaderBullshit = new BlendModeEffect(new OverlayShader(), FlxColor.RED);
-				// FlxG.camera.setFilters([new ShaderFilter(cast shaderBullshit.shader)]);
-				// overlayShit.shader = shaderBullshit;
-
 				limo = new FlxSprite(-120, 550);
 				limo.frames = Paths.getSparrowAtlas('limo/limoDrive');
 				limo.animation.addByPrefix('drive', "Limo stage", 24);
@@ -304,7 +294,6 @@ class PlayState extends MusicBeatState
 				limo.antialiasing = true;
 
 				fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
-			// add(limo);
 			case "cocoa" | 'eggnog':
 				curStage = 'mall';
 
@@ -492,14 +481,11 @@ class PlayState extends MusicBeatState
 				var smokeRight:BGSprite = new BGSprite('smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
 				add(smokeRight);
 
-				// tankGround.
-
 				tankWatchtower = new BGSprite('tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
 				add(tankWatchtower);
 
 				tankGround = new BGSprite('tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
 				add(tankGround);
-				// tankGround.active = false;
 
 				tankmanRun = new FlxTypedGroup<TankmenBG>();
 				add(tankmanRun);
@@ -510,8 +496,6 @@ class PlayState extends MusicBeatState
 				add(tankGround);
 
 				moveTank();
-
-				// smokeLeft.screenCenter();
 
 				var fgTank0:BGSprite = new BGSprite('tank0', -500, 650, 1.7, 1.5, ['fg']);
 				foregroundSprites.add(fgTank0);
@@ -666,13 +650,8 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 			case 'schoolEvil':
-				// trailArea.scrollFactor.set();
-
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-				// evilTrail.changeValuesEnabled(false, false, false, false);
-				// evilTrail.changeGraphic()
 				add(evilTrail);
-				// evilTrail.scrollFactor.set(1.1, 1.1);
 
 				boyfriend.x += 200;
 				boyfriend.y += 220;
@@ -729,11 +708,7 @@ class PlayState extends MusicBeatState
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 
-		// startCountdown();
-
 		generateSong();
-
-		// add(strumLine);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 
@@ -748,13 +723,10 @@ class PlayState extends MusicBeatState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);
-		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
-
-		FlxG.fixedTimestep = false;
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
 		healthBarBG.screenCenter(X);
@@ -793,15 +765,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-                #if mobile
-                addMobileControls();
-                #end
+		#if mobile
+		addMobileControls();
+		#end
 
-		// if (SONG.song == 'South')
-		// FlxG.camera.alpha = 0.7;
-		// UI_camera.zoom = 1;
-
-		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
 		if (isStoryMode && !seenCutscene)
@@ -837,12 +804,9 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-				case 'senpai':
-					schoolIntro(doof);
-				case 'roses':
-					FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
-				case 'thorns':
+				case 'senpai' | 'roses' | 'thorns':
+					if (curSong == 'roses') 
+						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 				case 'ugh':
 					ughIntro();
@@ -1483,6 +1447,12 @@ class PlayState extends MusicBeatState
 		super.onFocusLost();
 	}
 	#end
+
+	override function destroy(){
+		instance = null;
+
+		return super.destroy();
+	}
 
 	function resyncVocals():Void
 	{

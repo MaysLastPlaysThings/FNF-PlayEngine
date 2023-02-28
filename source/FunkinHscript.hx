@@ -6,7 +6,7 @@ import hscript.Interp;
 #end
 import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 
-class FunkinHscript implements IFlxDestroyable {
+class FunkinHscript extends ScriptGlobals implements IFlxDestroyable {
     #if HSCRIPT_ALLOWED
     var interp:Interp;
 
@@ -16,6 +16,8 @@ class FunkinHscript implements IFlxDestroyable {
 
     function runScript(file:String){
         var parser = new Parser();
+
+        parser.allowMetadata = parser.allowJSON = parser.allowTypes = true;
 
         try {
             final parsedFile = parser.parseString(file);

@@ -18,8 +18,12 @@ class GameOverSubstate extends MusicBeatSubstate
 	var randomGameover:Int = 1;
 	var playingDeathSound:Bool = false;
 
+	public static var instance:GameOverSubstate;
+
 	public function new(x:Float, y:Float)
 	{
+		instance = this;
+
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
 		switch (daStage)
@@ -48,8 +52,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
-		// FlxG.camera.followLerp = 1;
-		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
@@ -62,10 +64,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		randomGameover = FlxG.random.int(1, 25, exclude);
 
-                #if mobile
-                addVirtualPad(NONE, A);
-                addVirtualPadCamera();
-                #end
+		#if mobile
+		addVirtualPad(NONE, A);
+		addVirtualPadCamera();
+		#end
 	}
 
 	override function update(elapsed:Float)
@@ -150,5 +152,11 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			});
 		}
+	}
+
+	override function destroy(){
+		instance = null;
+
+		return super.destroy();
 	}
 }
