@@ -808,12 +808,12 @@ class PlayState extends MusicBeatState
 					if (curSong == 'roses') 
 						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'ugh':
+				/*case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
-					stressIntro();
+					stressIntro();*/
 				default:
 					startCountdown();
 			}
