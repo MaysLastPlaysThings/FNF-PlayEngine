@@ -29,7 +29,7 @@ class Main extends Sprite
 
 	public function new()
 	{
-                SUtil.uncaughtErrorHandler();
+                SUtil.gameCrashCheck();
 
 		super();
 
@@ -71,7 +71,7 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
-                SUtil.checkFiles();
+                SUtil.doTheCheck();
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
 
