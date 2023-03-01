@@ -1517,7 +1517,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore
-		+ ' | Accruracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%';
+		+ ' | Accruracy: ' + Highscore.floorDecimal(accruracyPercent * 100, 2) + '%';
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
