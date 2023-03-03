@@ -41,7 +41,7 @@
 	<!--Definitions-->
 	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
 	<define name="hscriptPos"/>
-	<define name="CUTSCENES_ALLOWED" if="desktop||mobile"/>
+	<define name="MP4_ALLOWED" if="desktop||mobile"/>
 	<define name="HSCRIPT_ALLOWED" if="desktop||mobile"/>
 	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
@@ -74,7 +74,7 @@
 		<library name="week7"    preload="false" />
 	</section>
 
-	<assets path="assets/videos"   library="videos"   if = "CUTSCENES_ALLOWED"/>
+	<assets path="assets/videos"   library="videos"   if = "MP4_ALLOWED"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3|*.mp4" unless="web"/>
 	<assets path="assets/shared"   library="shared"   exclude="*.ogg" if="web"/>
@@ -108,7 +108,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" if="HSCRIPT_ALLOWED"/>
 	<haxelib name="extension-androidtools" if="android" />
-	<haxelib name="hxCodec" if="CUTSCENES_ALLOWED" />
+	<haxelib name="hxCodec" if="MP4_ALLOWED" />
 	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
 
 	<!--In case you want to use the ui package-->
