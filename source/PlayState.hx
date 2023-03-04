@@ -45,6 +45,11 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import openfl.utils.Assets as OpenFlAssets;
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
+
 #if MP4_ALLOWED
 import vlc.MP4Handler;
 #end
