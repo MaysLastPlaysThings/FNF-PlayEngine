@@ -809,11 +809,8 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 				/*case 'ugh':
-					ughIntro();
 				case 'guns':
-					gunsIntro();
-				case 'stress':
-					stressIntro();*/
+				case 'stress':*/
 				default:
 					startCountdown();
 			}
@@ -828,57 +825,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
-	}
-
-	function ughIntro():Void
-	{
-		inCutscene = true;
-		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-		black.scrollFactor.set();
-		add(black);
-
-		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
-		{
-			remove(black);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		};
-		FlxG.camera.zoom = defaultCamZoom * 1.2;
-		camFollow.x += 100;
-		camFollow.y += 100;
-	}
-
-	function gunsIntro():Void
-	{
-		inCutscene = true;
-		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-		black.scrollFactor.set();
-		add(black);
-
-		new FlxVideo('videos/gunsCutscene.mp4').finishCallback = function()
-                {
-			remove(black);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		};
-	}
-
-	function stressIntro():Void
-	{
-		inCutscene = true;
-		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-		black.scrollFactor.set();
-		add(black);
-
-		new FlxVideo('videos/stressCutscene.mp4').finishCallback = function()
-                {
-			remove(black);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		};
 	}
 
 	function initDiscord():Void
