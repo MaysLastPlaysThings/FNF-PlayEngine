@@ -41,8 +41,8 @@
 	<!--Definitions-->
 	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
 	<define name="hscriptPos"/>
-	<define name="MP4_ALLOWED" if="desktop||mobile"/>
-	<define name="HSCRIPT_ALLOWED" if="desktop||mobile"/>
+	<define name="MP4_ALLOWED" if="windows || mobile"
+	<define name="HSCRIPT_ALLOWED" if="windows || mobile"/>
 	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
    <!--Preload All Thing-->
