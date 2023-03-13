@@ -33,6 +33,7 @@ class PauseSubState extends MusicBeatSubstate
 
                 #if mobile 
                 addVirtualPad(UP_DOWN, A);
+                addVirtualPadCamera(false);
                 #end
 
 		menuItems = pauseOG;
