@@ -773,7 +773,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		#if mobile
-		addMobileControls();
+		addMobileControls(false);
         mobileControls.visible = false;
 		#end
 
@@ -955,13 +955,12 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-
-		inCutscene = false;
-
-		camHUD.visible = true;
                 #if mobile
                 mobileControls.visible = true;
-                #end  
+                #end
+
+		inCutscene = false;
+		camHUD.visible = true;
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
