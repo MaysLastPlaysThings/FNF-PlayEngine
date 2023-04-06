@@ -8,3 +8,4 @@ unfinished fnf engine, with cool stuff
 - [Stefan2008](https://github.com/Stefan2008Github) - Third Programmer
 - [JonnyCat](https://github.com/JonnyCatMeow) - Fourth Programmer
 - [RecoloredPoyo4](https://github.com/Poyo2007) - Fifth Programmer
+- [DMMaster](https://github.com/DMMaster636) - Logo Designer
