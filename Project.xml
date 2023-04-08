@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<!-- _________________________ Application Settings _________________________ -->
+	<!-- _________________________ Game Settings _________________________ -->
 
 	<app title="Friday Night Funkin': Play Engine" file="PlayEngine" packageName="com.mayslastplay.funkin" package="com.mayslastplay.funkin" main="Main" version="0.2.8" company="MaysLastPlay" />
 	<app preloader="flixel.system.FlxPreloader" />
-
-	<!--Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
 	<set name="SWF_VERSION" value="11.8" />
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
-	<!--These window settings apply to all targets-->
 	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
 
-	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
 
-	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
-	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
@@ -31,21 +25,21 @@
 	<classpath name="source" />
 
 	<assets path="mobile" rename="assets/mobile" if="mobile" />
-
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
 	
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/> 
 
-	<!--Definitions-->
-	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/> <!--for one reason ios is a desktop Definitions-->
+	<!-- _____________________________ Libraries Path ____________________________ -->
+
+	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/>
 	<define name="hscriptPos"/>
 	<define name="MP4_ALLOWED" if="windows || mobile"/>
 	<define name="HSCRIPT_ALLOWED" if="windows || mobile"/>
 	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
-   <!--Preload All Thing-->
+	<!-- _____________________________ Preload Settings ____________________________ -->
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
 		<library name="shared"   preload="true" />
@@ -99,19 +93,16 @@
 	<assets path='example_mods' rename='mods' embed='false'/>
 
 	<assets path="assets/fonts" embed='true'/>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
 	<haxedev set='webgl' if="web" />
-
-	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" if="HSCRIPT_ALLOWED"/>
 	<haxelib name="extension-androidtools" if="android" />
 	<haxelib name="hxCodec" if="MP4_ALLOWED" />
 	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
-
-	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
@@ -135,9 +126,8 @@
 	<section if="android">
                 <!--Gradle-->
 		<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
-
-                <!--Audio Recording Fix-->
-		<!--<config:android target-sdk-version="29" if="${lime < 8.1.0}" />-->
+ 	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+	<android target-sdk-version="29" if="android"/>
 	</section>
 
 	<section if="ios">
@@ -155,7 +145,4 @@
 	<icon path="art/icon64.png" size='64'/>
 	<icon path="art/iconOG.png" />
 
-	<!--The Newgrounds version of FNF was built with 'ng' defined, and so will the port!-->
-	<haxedef name="ng" />
-	
 </project>
