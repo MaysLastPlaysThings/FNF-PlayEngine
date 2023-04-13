@@ -190,7 +190,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = ('tutorial');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -860,7 +860,7 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyText + ")", iconRPC);
 		#end
 	}
 
@@ -1389,32 +1389,6 @@ class PlayState extends MusicBeatState
 
 		return super.destroy();
 	}
-	
-	#if MP4_ALLOWED
-  function playCutscene(name:String, endSong:Bool = false)
- {
-	inCutscene = true;
-	FlxG.sound.music.stop();
-
-	var video:VideoHandler = new VideoHandler();
-	video.finishCallback = function()
-	{
-		if (endSong)
-		{
-			if (storyPlaylist.length <= 0)
-				FlxG.switchState(new StoryMenuState());
-			else
-			{
-				SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
-				FlxG.switchState(new PlayState());
-			}
-		}
-		else
-			startCountdown();
-	}
-	video.playVideo(Paths.video(name));
- }
-#end
 
 	function resyncVocals():Void
 	{
@@ -1888,6 +1862,32 @@ class PlayState extends MusicBeatState
 	}
 
 	var endingSong:Bool = false;
+
+	#if MP4_ALLOWED
+  function playCutscene(name:String, endSong:Bool = false)
+ {
+	inCutscene = true;
+	FlxG.sound.music.stop();
+
+	var video:VideoHandler = new VideoHandler();
+	video.finishCallback = function()
+	{
+		if (endSong)
+		{
+			if (storyPlaylist.length <= 0)
+				FlxG.switchState(new StoryMenuState());
+			else
+			{
+						PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+				FlxG.switchState(new PlayState());
+			}
+		}
+		else
+			startCountdown();
+	}
+	video.playVideo(Paths.video(name));
+ }
+#end
 
 	private function popUpScore(strumtime:Float, daNote:Note):Void
 	{
