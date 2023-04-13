@@ -1388,7 +1388,7 @@ class PlayState extends MusicBeatState
 	}
 	
 	#if MP4_ALLOWED
-  function playCutscene(name:String, atEndOfSong:Bool = false)
+  function playCutscene(name:String, endSong:Bool = false)
  {
 	inCutscene = true;
 	FlxG.sound.music.stop();
@@ -1396,7 +1396,7 @@ class PlayState extends MusicBeatState
 	var video:VideoHandler = new VideoHandler();
 	video.finishCallback = function()
 	{
-		if (atEndOfSong)
+		if (endSong)
 		{
 			if (storyPlaylist.length <= 0)
 				FlxG.switchState(new StoryMenuState());
