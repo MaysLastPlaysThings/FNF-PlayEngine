@@ -190,7 +190,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = ('tutorial');
+			SONG = Song.loadFromJson('tutorial');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -860,7 +860,7 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyText + ")", iconRPC);
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyTextText + ")", iconRPC);
 		#end
 	}
 
