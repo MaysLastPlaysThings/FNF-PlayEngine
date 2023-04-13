@@ -31,8 +31,8 @@ jobs:
           haxelib install flixel-addons 2.11.0
           haxelib install polymod
           haxelib install hscript
-          haxelib install hxCodec 2.5.1
           haxelib install hxcpp-debug-server
+          haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
           haxelib git linc_luajit https://github.com/AndreiRudenko/linc_luajit.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
         shell: cmd
