@@ -1402,7 +1402,7 @@ class PlayState extends MusicBeatState
 				FlxG.switchState(new StoryMenuState());
 			else
 			{
-				SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
+				SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.switchState(new PlayState());
 			}
 		}
