@@ -229,14 +229,6 @@ class TitleState extends MusicBeatState
 			initialized = true;
 
 		// credGroup.add(credTextShit);
-
-		if (FlxG.sound.music != null)
-		{
-			FlxG.sound.music.onComplete = function()
-			{
-				FlxG.switchState(new State());
-			}
-		}
 	}
 
 	function getIntroTextShit():Array<Array<String>>
