@@ -1878,7 +1878,7 @@ class PlayState extends MusicBeatState
 					LoadingState.loadAndSwitchState(new StoryMenuState());
 			else
 			{
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase());
 
 					LoadingState.loadAndSwitchState(new PlayState());
 			}
