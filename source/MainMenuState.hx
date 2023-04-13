@@ -27,7 +27,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var EngineVer:String = '0.1.1';
+	public static var EngineVer:String = '0.0.9';
 
 	var menuItems:MainMenuList;
 
