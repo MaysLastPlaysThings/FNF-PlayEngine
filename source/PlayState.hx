@@ -1863,32 +1863,44 @@ class PlayState extends MusicBeatState
 
 	var endingSong:Bool = false;
 
-	#if MP4_ALLOWED
-  function playCutscene(name:String, endSong:Bool = false)
- {
-	inCutscene = true;
-	FlxG.sound.music.stop();
-
-	var video:VideoHandler = new VideoHandler();
-	video.finishCallback = function()
+	public function playCutscene(name:String)
 	{
-		if (endSong)
-		{
-			if (storyPlaylist.length <= 0)
-					LoadingState.loadAndSwitchState(new StoryMenuState());
-			else
-			{
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase());
+		#if MP4_ALLOWED
+		inCutscene = true;
 
-					LoadingState.loadAndSwitchState(new PlayState());
-			}
+		var filepath:String = Paths.video(name);
+		#if sys
+		if(!FileSystem.exists(filepath))
+		#else
+		if(!OpenFlAssets.exists(filepath))
+		#end
+		{
+			FlxG.log.warn('Couldnt find video file: ' + name);
+			startAndEnd();
+			return;
 		}
+
+		var video:VideoHandler = new VideoHandler();
+		video.playVideo(filepath);
+		video.finishCallback = function()
+		{
+			startAndEnd();
+			return;
+		}
+		#else
+		FlxG.log.warn('Platform not supported!');
+		startAndEnd();
+		return;
+		#end
+	}
+
+	function startAndEnd()
+	{
+		if(endingSong)
+			endSong();
 		else
 			startCountdown();
 	}
-	video.playVideo(Paths.video(name));
- }
-#end
 
 	private function popUpScore(strumtime:Float, daNote:Note):Void
 	{
