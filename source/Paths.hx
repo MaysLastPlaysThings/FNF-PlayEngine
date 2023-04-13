@@ -105,10 +105,10 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function video(key:String, ?library:String)
-	{
-		return SUtil.getPath() + getPath('videos/$key.mp4', TEXT, library);
-	}
+  inline static public function video(key:String)
+  {
+		return SUtil.getPath() + 'assets/videos/$key';
+  }
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
