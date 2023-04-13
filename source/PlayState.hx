@@ -1386,6 +1386,32 @@ class PlayState extends MusicBeatState
 
 		return super.destroy();
 	}
+	
+	#if MP4_ALLOWED
+  function playCutscene(name:String, atEndOfSong:Bool = false)
+ {
+	inCutscene = true;
+	FlxG.sound.music.stop();
+
+	var video:VideoHandler = new VideoHandler();
+	video.finishCallback = function()
+	{
+		if (atEndOfSong)
+		{
+			if (storyPlaylist.length <= 0)
+				FlxG.switchState(new StoryMenuState());
+			else
+			{
+				SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
+				FlxG.switchState(new PlayState());
+			}
+		}
+		else
+			startCountdown();
+	}
+	video.playVideo(Paths.video(name));
+ }
+#end
 
 	function resyncVocals():Void
 	{
