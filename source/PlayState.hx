@@ -817,11 +817,11 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 				case 'ugh':
-				playVideo('ughCutscene');
+				playCutscene('ughCutscene');
 				case 'guns':
-				playVideo('gunsCutscene');
+				playCutscene('gunsCutscene');
 				case 'stress':
-				playVideo('stressCutscene');
+				playCutscene('stressCutscene');
 				default:
 					startCountdown();
 			}
