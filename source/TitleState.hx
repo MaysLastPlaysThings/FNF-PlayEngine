@@ -2,7 +2,6 @@ package;
 
 import openfl.display.Sprite;
 import openfl.net.NetStream;
-import openfl.media.Video;
 import ui.PreferencesMenu;
 import shaderslmfao.BuildingShaders;
 import shaderslmfao.ColorSwap;
@@ -57,12 +56,6 @@ class TitleState extends MusicBeatState
 	var swagShader:ColorSwap;
 	var alphaShader:BuildingShaders;
 
-	#if web
-	var video:Video;
-	var netStream:NetStream;
-	var overlay:Sprite;
-	#end
-
 	override public function create():Void
 	{
 		#if mobile
@@ -104,11 +97,6 @@ class TitleState extends MusicBeatState
 				StoryMenuState.weekUnlocked[0] = true;
 		}
 
-		if (FlxG.save.data.seenVideo != null)
-		{
-			VideoState.seenVideo = FlxG.save.data.seenVideo;
-		}
-
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
 		#elseif CHARTING
@@ -128,36 +116,6 @@ class TitleState extends MusicBeatState
 		 });
 		#end
 	}
-
-	#if web
-	function client_onMetaData(e)
-	{
-		video.attachNetStream(netStream);
-		video.width = video.videoWidth;
-		video.height = video.videoHeight;
-	}
-
-	function netStream_onAsyncError(e)
-	{
-		trace("Error loading video");
-	}
-
-	function netConnection_onNetStatus(e)
-	{
-		if (e.info.code == 'NetStream.Play.Complete')
-		{
-			startIntro();
-		}
-		trace(e.toString());
-	}
-
-	function overlay_onMouseDown(e)
-	{
-		netStream.soundTransform.volume = 0.2;
-		netStream.soundTransform.pan = -1;
-		Lib.current.stage.removeChild(overlay);
-	}
-	#end
 
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
@@ -276,7 +234,7 @@ class TitleState extends MusicBeatState
 		{
 			FlxG.sound.music.onComplete = function()
 			{
-				FlxG.switchState(new VideoState());
+				FlxG.switchState(new State());
 			}
 		}
 	}
