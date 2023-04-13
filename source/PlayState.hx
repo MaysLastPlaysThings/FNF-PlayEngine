@@ -51,7 +51,7 @@ import sys.io.File;
 #end
 
 #if MP4_ALLOWED
-import vlc.MP4Handler;
+import VideoHandler;
 #end
 
 using StringTools;
