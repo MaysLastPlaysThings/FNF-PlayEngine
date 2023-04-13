@@ -110,14 +110,7 @@ class MainMenuState extends MusicBeatState
 		{
 			startExitState(new FreeplayState());
 		});
-		if (VideoState.seenVideo)
-		{
-			menuItems.createItem(null, null, "kickstarter", selectDonate, true);
-		}
-		else
-		{
 			menuItems.createItem(null, null, "donate", selectDonate, true);
-		}
 		menuItems.createItem(0, 0, "options", function()
 		{
 			startExitState(new OptionsState());
