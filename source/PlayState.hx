@@ -754,6 +754,15 @@ class PlayState extends MusicBeatState
   }else{
     	healthBar.createFilledBar(0xAF66CE00, 0x31B0D100);
   }
+  case 'spooky':
+    if (SONG.song.toLowerCase() == 'spookeez' && SONG.song.toLowerCase() == 'south')
+    {
+   		healthBar.createFilledBar(0xAF66CE00, 0x31B0D100);
+    }else{
+      healthBar.createFilledBar(0xF3FF6E00, 0x31B0D100);
+    }
+  case 'philly':
+   		healthBar.createFilledBar(0xB7D85500, 0x31B0D100);
    default:
 		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
  }
