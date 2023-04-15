@@ -107,6 +107,13 @@
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
 
+	<!-- ______________________________ Android Configs _____________________________ -->
+
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
+   <config:android gradle-version="7.5.1" />
+   <config:android gradle-plugin="7.3.1" />
+
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<!--Disable the Flixel core focus lost screen-->
@@ -125,22 +132,6 @@
 
         <!-- Show debug traces for hxCodec -->
         <haxedef name="HXC_DEBUG_TRACE" if="debug" />
-
-	<section if="android">
-	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
-	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
-	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT"/>
-	<android target-sdk-version="29" if="android"/>
-                <!--Gradle-->
-		<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
-	</section>
-
-	<section if="ios">
-		<!--Dependency--> 
-		<dependency name="Metal.framework" />
-		<dependency name="WebKit.framework" />
-	</section>
-
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
