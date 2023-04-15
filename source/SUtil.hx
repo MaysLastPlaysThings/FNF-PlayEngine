@@ -5,6 +5,7 @@ import android.Tools;
 import android.Permissions;
 import android.PermissionsList;
 #end
+import flixel.FlxG;
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets as OpenFlAssets;
@@ -15,7 +16,6 @@ import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 import flash.system.System;
-import flixel.FlxG;
 
 /**
  * ...
@@ -56,10 +56,10 @@ class SUtil
 			if (!FileSystem.exists(Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file')))
 				FileSystem.createDirectory(Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file'));
 
-			if (!FileSystem.exists(SUtil.getPath() + 'assets'))
+			if (!FileSystem.exists(SUtil.getPath() + 'assets') && !FileSystem.exists(SUtil.getPath() + 'mods'))
 			{
 				SUtil.applicationAlert('Uncaught Error :(!', "Whoops, seems you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.");
-				FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+				Flx.openURL('https://youtu.be/zjvkTmdWvfU');
 				System.exit(0);
 			}
 			else
@@ -67,10 +67,16 @@ class SUtil
 				if (!FileSystem.exists(SUtil.getPath() + 'assets'))
 				{
 					SUtil.applicationAlert('Uncaught Error :(!', "Whoops, seems you didn't extract the assets/assets folder from the .APK!\nPlease watch the tutorial by pressing OK.");
-					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+					Flx.openURL('https://youtu.be/zjvkTmdWvfU');
 					System.exit(0);
 				}
 
+				if (!FileSystem.exists(SUtil.getPath() + 'mods'))
+				{
+					SUtil.applicationAlert('Uncaught Error :(!', "Whoops, seems you didn't extract the assets/mods folder from the .APK!\nPlease watch the tutorial by pressing OK.");
+					Flx.openURL('https://youtu.be/zjvkTmdWvfU');
+					System.exit(0);
+				}
 			}
 		}
 		#end
