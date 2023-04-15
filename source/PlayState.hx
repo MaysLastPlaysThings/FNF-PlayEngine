@@ -1883,7 +1883,7 @@ class PlayState extends MusicBeatState
 
 		var video:VideoHandler = new VideoHandler();
 		video.playVideo(filepath);
-		video.finishCallback = function() 
+		video.finishCallback = function()
 		{
 			startAndEnd();
 			return;
