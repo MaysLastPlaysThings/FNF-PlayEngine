@@ -745,39 +745,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-   switch (curStage)
- {
-   case 'stage':
-   if (SONG.song.toLowerCase() == 'tutorial')
-  {
-   		healthBar.createFilledBar(0xA5004D00, 0x31B0D100);
-  }else{
-    	healthBar.createFilledBar(0xAF66CE00, 0x31B0D100);
-  }
-  case 'spooky':
-    if (SONG.song.toLowerCase() == 'spookeez' && SONG.song.toLowerCase() == 'south')
-    {
-   		healthBar.createFilledBar(0xAF66CE00, 0x31B0D100);
-    }else{
-      healthBar.createFilledBar(0xF3FF6E00, 0x31B0D100);
-    }
-  case 'philly':
-   		healthBar.createFilledBar(0xB7D85500, 0x31B0D100);
-  case 'limo':
-    		healthBar.createFilledBar(0xD8558E00, 0x31B0D100); 
-  case 'mall':
-      	healthBar.createFilledBar(0xAF66CE00, 0x31B0D100);
-   case 'mallEvil':
-       healthBar.createFilledBar(0xF3FF6E00, 0x31B0D100);
-   case 'school':
-       healthBar.createFilledBar(0xFFAA6F00, 0x7BD6F600);
-   case 'schoolEvil':
-       healthBar.createFilledBar(0xFF3C6E00, 0x7BD6F600);
-   case 'tank':
-       healthBar.createFilledBar(0x00000000, 0x31B0D100);
-   default:
-		healthBar.createFilledBar(0xA1A1A100, 0x31B0D100);
- }
+		healthBar.createFilledBar(0xFFFF0000, 0xFF31b0d1);
 		// healthBar
 		add(healthBar);
 
