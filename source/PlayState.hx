@@ -818,11 +818,11 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 
 				case 'ugh':
-				playCutscene('ughCutscene.mp4');
+				playCutscene('ughCutscene');
 				case 'guns':
-				playCutscene('gunsCutscene.mp4');
+				playCutscene('gunsCutscene');
 				case 'stress':
-				playCutscene('stressCutscene.mp4');
+				playCutscene('stressCutscene');
 				default:
 					startCountdown();
 			}
@@ -1869,14 +1869,14 @@ class PlayState extends MusicBeatState
 		#if MP4_ALLOWED
 		inCutscene = true;
 
-		var filepath:String = Paths.video(name);
+		var filepath:String = Paths.video(name + '.mp4');
 		#if sys
 		if(!FileSystem.exists(filepath))
 		#else
 		if(!OpenFlAssets.exists(filepath))
 		#end
 		{
-			FlxG.log.warn('Couldnt find video file: ' + name);
+			FlxG.log.warn('Couldnt find video file: ' + name + '.mp4');
 			startAndEnd();
 			return;
 		}
