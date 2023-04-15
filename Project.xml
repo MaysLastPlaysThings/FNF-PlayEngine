@@ -126,8 +126,6 @@
 	<section if="android">
                 <!--Gradle-->
 		<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
- 	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT"/>
-	<android target-sdk-version="29" if="android"/>
 	</section>
 
 	<section if="ios">
