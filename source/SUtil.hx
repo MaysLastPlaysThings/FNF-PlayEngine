@@ -14,8 +14,8 @@ import haxe.CallStack;
 import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
-import flixel.FlxG;
 import flash.system.System;
+import flixel.FlxG;
 
 /**
  * ...
@@ -70,6 +70,7 @@ class SUtil
 					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
 					System.exit(0);
 				}
+
 			}
 		}
 		#end

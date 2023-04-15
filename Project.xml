@@ -35,7 +35,7 @@
 
 	<define name="DISCORD_ALLOWED" if="windows||linux||mac"/>
 	<define name="hscriptPos"/>
-	<define name="MP4_ALLOWED" if="windows || mobile"/>
+	<define name="MP4_ALLOWED" if="desktop || android"/>
 	<define name="HSCRIPT_ALLOWED" if="windows || mobile"/>
 	<define name="LUA_ALLOWED" if="desktop||mobile" />
 
@@ -68,7 +68,7 @@
 		<library name="week7"    preload="false" />
 	</section>
 
-	<assets path="assets/videos"   library="videos"   if = "MP4_ALLOWED"/>
+	<assets path="assets/preload/videos"   library="videos"   if = "MP4_ALLOWED"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3|*.mp4" unless="web"/>
 	<assets path="assets/shared"   library="shared"   exclude="*.ogg" if="web"/>
@@ -122,6 +122,9 @@
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
 	<haxedef name="HXCPP_STACK_TRACE"/>
+
+        <!-- Show debug traces for hxCodec -->
+        <haxedef name="HXC_DEBUG_TRACE" if="debug" />
 
 	<section if="android">
                 <!--Gradle-->
