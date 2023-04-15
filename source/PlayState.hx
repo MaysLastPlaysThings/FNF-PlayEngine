@@ -750,7 +750,8 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+                scoreTxt.borderSize = 1.25;
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
@@ -774,7 +775,7 @@ class PlayState extends MusicBeatState
 
 		#if mobile
 		addMobileControls(false);
-        mobileControls.visible = false;
+                mobileControls.visible = false;
 		#end
 
 		startingSong = true;
