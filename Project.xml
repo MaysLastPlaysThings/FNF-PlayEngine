@@ -68,7 +68,7 @@
 		<library name="week7"    preload="false" />
 	</section>
 
-	<assets path="assets/preload/videos"   library="videos"   if = "MP4_ALLOWED"/>
+	<assets path="assets/videos"   library="videos"   if = "MP4_ALLOWED"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3|*.mp4" unless="web"/>
 	<assets path="assets/shared"   library="shared"   exclude="*.ogg" if="web"/>
@@ -127,6 +127,10 @@
         <haxedef name="HXC_DEBUG_TRACE" if="debug" />
 
 	<section if="android">
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
+	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+	<android target-sdk-version="29" if="android"/>
                 <!--Gradle-->
 		<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
 	</section>
