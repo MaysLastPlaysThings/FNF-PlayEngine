@@ -1,5 +1,4 @@
 package shaderslmfao;
-import shaderslmfao.BuildingShader;
 
 class BuildingShaders
 {
