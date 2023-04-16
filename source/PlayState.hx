@@ -145,6 +145,7 @@ class PlayState extends MusicBeatState
 	var scoreTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
+	public static var campaignMisses:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
 
@@ -749,9 +750,9 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.x + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-                scoreTxt.borderSize = 1.25;
+        scoreTxt.borderSize = 1.25;
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
@@ -1474,7 +1475,8 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore;
+		scoreTxt.text = "Score:" + songScore 
+		+ ' / Misses: ' + songMisses;
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
@@ -1789,12 +1791,14 @@ class PlayState extends MusicBeatState
 		deathCounter = 0;
 		canPause = false;
 		FlxG.sound.music.volume = 0;
+		songMisses++;
 		vocals.volume = 0;
 		Highscore.saveScore(SONG.song, songScore, storyDifficulty);
 
 		if (isStoryMode)
 		{
 			campaignScore += songScore;
+			campaignMisses += songMisses;
 
 			storyPlaylist.remove(storyPlaylist[0]);
 
@@ -2228,6 +2232,7 @@ class PlayState extends MusicBeatState
 
 			if (!practiceMode)
 				songScore -= 10;
+			    songMisses++;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
