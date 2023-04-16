@@ -16,4 +16,4 @@ unfinished fnf engine, with cool stuff
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
 ## GAME COMPILE INSTRUCTIONS
-go to [Installing Instructions](https://github.com/MaysLastPlays-Things/FNF-PlayEngine-Rework/blob/main/INSTALLING.md)
+go to [Installing Instructions](https://github.com/MaysLastPlays-Things/FNF-PlayEngine-Rework/blob/main/BUILD-INSTRUCTIONS.md)
