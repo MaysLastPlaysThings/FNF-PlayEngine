@@ -40,5 +40,6 @@ Once you have all those installed, it's pretty easy to compile the game. You jus
 
 - [Command line basics](https://ninjamuffin99.newgrounds.com/news/post/1090480)
 
-### Build instructions for Android
-later tho
+## Build instructions for Android
+
+### later tho
