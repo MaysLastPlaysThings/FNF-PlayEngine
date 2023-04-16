@@ -12,7 +12,7 @@ Added Videos Folder;
 Changed path to video on Paths.hx;
 
 ### 0.0.9 
-Health Bar Colors 
+Health Bar Colors (BF)
 
 HxCodec Suppport 
 
