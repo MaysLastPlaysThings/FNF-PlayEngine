@@ -141,7 +141,7 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
-	var songComboBreaks:Int = 0;
+	var songMisses:Int = 0;
 	var scoreTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
