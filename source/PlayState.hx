@@ -1476,7 +1476,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore 
-		+ ' / Misses: ' + songMisses;
+		+ ' | Misses: ' + songMisses + ' | Health: ' + Math.round(health * 50) + '%';
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
