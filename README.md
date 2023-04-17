@@ -1,5 +1,4 @@
 ## FNF Play Engine
-unfinished fnf engine, with cool stuff
 ![Play Engine logo](logo.png)
 # Dev Team Members
 - [MaysLastPlay](https://github.com/MaysLastPlayGithub) - Main Programmer
