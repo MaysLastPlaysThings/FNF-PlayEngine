@@ -1,6 +1,12 @@
 ## FNF Play Engine
-unfinished fnf engine, with cool stuff
 ![Play Engine logo](logo.png)
+- Play Engine is FNF Engine what adds new features to original Friday Night Funkin' game.
+### Features
+- Updated HUD
+- New FPS Counter
+- hxCodec Videos Support
+- Android Support
+- And Many Different Cool Things
 # Dev Team Members
 - [MaysLastPlay](https://github.com/MaysLastPlayGithub) - Main Programmer
 - [MemeHoovy](https://github.com/MemeHovy) - Second Programmer
