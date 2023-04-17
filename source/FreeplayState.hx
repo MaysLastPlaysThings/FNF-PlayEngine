@@ -200,16 +200,10 @@ class FreeplayState extends MusicBeatState
 		scoreText.text = "PERSONAL BEST:" + Math.round(lerpScore);
 		positionHighscore();
 
-		var upP = controls.UI_UP_P;
-		var downP = controls.UI_DOWN_P;
-		var accepted = controls.ACCEPT;
-
-		if (upP)
-		{
+			if (#if android virtualPad.buttonUp.justPressed #else controls.UP #end) {
 			changeSelection(-1);
 		}
-		if (downP)
-		{
+			if (#if android virtualPad.buttonDown.justPressed #else controls.DOWN #end) {
 			changeSelection(1);
 		}
 		if (FlxG.mouse.wheel != 0)
@@ -220,14 +214,12 @@ class FreeplayState extends MusicBeatState
 		if (controls.UI_RIGHT_P)
 			changeDiff(1);
 
-		if (controls.BACK)
-		{
+			if (#if android virtualPad.buttonB.justPressed #else controls.BACK #end) {
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			FlxG.switchState(new MainMenuState());
 		}
 
-		if (accepted)
-		{
+			if (#if android virtualPad.buttonA.justPressed #else controls.ACCEPT #end) {
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
 			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
