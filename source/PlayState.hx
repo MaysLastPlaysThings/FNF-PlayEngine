@@ -1199,11 +1199,11 @@ class PlayState extends MusicBeatState
 					swagNote.x += FlxG.width / 2; // general offset
 				}
 
-				swagNote.forEach(function(daNote:Note)
+				/*songNotes.forEach(function(daNote:Note)
 				{
 					if (!daNote.isSustainNote && daNote.mustPress)
 						maxNotes += 1;
-				});
+				});*/
 			}
 		}
 
@@ -1506,7 +1506,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.text = "Score:" + songScore
 		+ ' | Misses: ' + songMisses
 		+ ' | Health: ' + Math.round(health * 50) + '%'
-		+ ' | Notes Hit: ' + notesHit + ' / ' + maxNotes
+		+ ' | Notes Hit: ' + notesHit /*+ ' / ' + maxNotes*/
 		+ ' | Accuracy: ' + truncateFloat(songAccuracy, 2) + '%';
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
@@ -1789,8 +1789,20 @@ class PlayState extends MusicBeatState
 				{
 					if (daNote.tooLate || !daNote.wasGoodHit)
 					{
-						health -= 0.0475;
+						health -= 0.0075;
 						vocals.volume = 0;
+
+						switch (Math.abs(daNote.noteData))
+						{
+							case 0:
+								noteMiss(0);
+							case 1:
+								noteMiss(1);
+							case 2:
+								noteMiss(2);
+							case 3:
+								noteMiss(3);
+						}
 					}
 
 					daNote.active = false;
@@ -2364,7 +2376,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		updateAccuracy();
+		if (!note.isSustainNote)
+			updateAccuracy();
 	}
 
 	var fastCarCanDrive:Bool = true;
