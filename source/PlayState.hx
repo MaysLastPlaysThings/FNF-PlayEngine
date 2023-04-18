@@ -50,8 +50,10 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-#if MP4_ALLOWED
-import VideoHandler;
+#if MP4_ALLOWED 
+#if (hxCodec >= "2.6.1") import hxcodec.VideoHandler;
+#elseif (hxCodec == "2.6.0") import VideoHandler;
+#else import vlc.MP4Handler as VideoHandler; #end
 #end
 
 using StringTools;
