@@ -144,6 +144,8 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
+	var notesHit:Int = 0;
+	var maxNotes:Int = 0;
 	private var songAccuracy:Float = 0.00;
 	private var totalNotesHit:Float = 0;
 	private var totalPlayed:Int = 0;	
@@ -1196,6 +1198,12 @@ class PlayState extends MusicBeatState
 				{
 					swagNote.x += FlxG.width / 2; // general offset
 				}
+
+				swagNote.forEach(function(daNote:Note)
+				{
+					if (!daNote.isSustainNote && daNote.mustPress)
+						maxNotes += 1;
+				});
 			}
 		}
 
@@ -1495,9 +1503,10 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore 
-		+ ' | Misses: ' + songMisses 
+		scoreTxt.text = "Score:" + songScore
+		+ ' | Misses: ' + songMisses
 		+ ' | Health: ' + Math.round(health * 50) + '%'
+		+ ' | Notes Hit: ' + notesHit + ' / ' + maxNotes
 		+ ' | Accuracy: ' + truncateFloat(songAccuracy, 2) + '%';
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
@@ -2351,6 +2360,7 @@ class PlayState extends MusicBeatState
 				note.kill();
 				notes.remove(note, true);
 				note.destroy();
+				notesHit += 1;
 			}
 		}
 
