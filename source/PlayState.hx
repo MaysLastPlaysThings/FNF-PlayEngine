@@ -2238,8 +2238,6 @@ class PlayState extends MusicBeatState
 			    songMisses++;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
 
 			boyfriend.stunned = true;
 
@@ -2470,14 +2468,7 @@ class PlayState extends MusicBeatState
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
 				FlxG.log.add('CHANGED BPM!');
 			}
-			// else
-			// Conductor.changeBPM(SONG.bpm);
-
-			// Dad doesnt interupt his own notes
-			// if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
-			// 	dad.dance();
 		}
-		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
 		if (PreferencesMenu.getPref('camera-zoom'))
