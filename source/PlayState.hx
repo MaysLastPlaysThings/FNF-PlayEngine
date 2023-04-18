@@ -144,6 +144,9 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
+	private var songAccuracy:Float = 0.00;
+	private var totalNotesHit:Float = 0;
+	private var totalPlayed:Int = 0;	
 	var scoreTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
@@ -868,6 +871,15 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	function updateAccuracy()
+	{
+		totalPlayed += 1;
+		songAccuracy = totalNotesHit / totalPlayed * 100;
+		if (songAccuracy >= 100){
+			songAccuracy = 100;
+		}	
+	}	
+
 	function schoolIntro(?dialogueBox:DialogueBox):Void
 	{
 		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
@@ -1415,6 +1427,13 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var cameraRightSide:Bool = false;
 
+	function truncateFloat( number : Float, precision : Int): Float {
+		var num = number;
+		num = num * Math.pow(10, precision);
+		num = Math.round( num ) / Math.pow(10, precision);
+		return num;
+	}
+
 	override public function update(elapsed:Float)
 	{
 		FlxG.camera.followLerp = CoolUtil.camLerpShit(0.04);
@@ -1479,7 +1498,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.text = "Score:" + songScore 
 		+ ' | Misses: ' + songMisses 
 		+ ' | Health: ' + Math.round(health * 50) + '%'
-		+ ' | Accruracy: ' + Highscore.floorDecimal(100, 2) + '%';
+		+ ' | Accuracy: ' + truncateFloat(songAccuracy, 2) + '%';
 
 		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
@@ -1930,22 +1949,27 @@ class PlayState extends MusicBeatState
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
+			totalNotesHit += 1 - 0.9;
 			daRating = 'shit';
 			score = 50;
 			doSplash = false;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
+			totalNotesHit += 1 - 0.75;
 			daRating = 'bad';
 			score = 100;
 			doSplash = false;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.2)
 		{
+			totalNotesHit += 1 - 0.2;
 			daRating = 'good';
 			score = 200;
 			doSplash = false;
 		}
+		if (daRating == 'sick')
+			totalNotesHit += 1;
 
 		if (doSplash)
 		{
@@ -2258,6 +2282,8 @@ class PlayState extends MusicBeatState
 				case 3:
 					boyfriend.playAnim('singRIGHTmiss', true);
 			}
+
+			updateAccuracy();
 		}
 	}
 
@@ -2289,6 +2315,8 @@ class PlayState extends MusicBeatState
 				popUpScore(note.strumTime, note);
 				combo += 1;
 			}
+			else
+				totalNotesHit += 1;
 
 			if (note.noteData >= 0)
 				health += 0.023;
@@ -2325,6 +2353,8 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		}
+
+		updateAccuracy();
 	}
 
 	var fastCarCanDrive:Bool = true;
