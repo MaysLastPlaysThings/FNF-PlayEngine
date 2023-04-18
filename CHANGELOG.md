@@ -17,3 +17,6 @@ Health Bar Colors (BF)
 HxCodec Suppport 
 
 Android Support
+
+## 0.1
+First Public Release
