@@ -27,7 +27,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var EngineVer:String = '0.1.1';
+	public static var EngineVer:String = '0.1';
 
 	var menuItems:MainMenuList;
 
@@ -110,14 +110,7 @@ class MainMenuState extends MusicBeatState
 		{
 			startExitState(new FreeplayState());
 		});
-		if (VideoState.seenVideo)
-		{
-			menuItems.createItem(null, null, "kickstarter", selectDonate, true);
-		}
-		else
-		{
 			menuItems.createItem(null, null, "donate", selectDonate, true);
-		}
 		menuItems.createItem(0, 0, "options", function()
 		{
 			startExitState(new OptionsState());

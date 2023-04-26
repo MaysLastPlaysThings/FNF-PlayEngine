@@ -545,17 +545,13 @@ class Controls extends FlxActionSet
 				@:privateAccess action.inputs[i].inputID = toAdd;
 		}
 	}
-	/**
-	 * Sets all actions that pertain to the binder to trigger when the supplied keys are used.
-	 * If binder is a literal you can inline this
-	 */
 	#if !mobile
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
 	{
 		var copyKeys:Array<FlxKey> = keys.copy();
-		for (i in 0...copyKeys.length) {
-			if(i == NONE) copyKeys.remove(i);
-		}
+		for (i in 0...copyKeys.length)
+			if(i == NONE)
+				copyKeys.remove(i);
 
 		inline forEachBound(control, (action, state) -> addKeys(action, copyKeys, state));
 	}
@@ -563,9 +559,9 @@ class Controls extends FlxActionSet
 	public function unbindKeys(control:Control, keys:Array<FlxKey>)
 	{
 		var copyKeys:Array<FlxKey> = keys.copy();
-		for (i in 0...copyKeys.length) {
-			if(i == NONE) copyKeys.remove(i);
-		}
+		for (i in 0...copyKeys.length)
+			if(i == NONE)
+				copyKeys.remove(i);
 
 		inline forEachBound(control, (action, _) -> removeKeys(action, copyKeys));
 	}

@@ -65,7 +65,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		randomGameover = FlxG.random.int(1, 25, exclude);
 
 		#if mobile
-		addVirtualPad(NONE, A);
+		addVirtualPad(NONE, A_B);
+		addVirtualPadCamera(false);
 		#end
 	}
 

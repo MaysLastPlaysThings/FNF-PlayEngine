@@ -31,8 +31,8 @@ jobs:
           haxelib install flixel-addons 2.11.0
           haxelib install polymod
           haxelib install hscript
-          haxelib install hxCodec
           haxelib install hxcpp-debug-server
+          haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
           haxelib git linc_luajit https://github.com/AndreiRudenko/linc_luajit.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
         shell: cmd
@@ -69,21 +69,21 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
-          distribution: 'zulu'
-          java-version: 18
+          distribution: zulu
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
 
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
+          haxelib install hxcpp
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
           haxelib --never install flixel 4.11.0
@@ -91,13 +91,11 @@ jobs:
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons 2.11.0
-          haxelib install tjson
-          haxelib install hxjsonast
           haxelib install hscript
-          haxelib install hxCodec
           haxelib install polymod
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
           haxelib git extension-androidtools https://github.com/MaysLastPlay77/extension-androidtools.git
+          haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
           haxelib install hxcpp-debug-server
           haxelib list
       - name: Create Version Tag
@@ -118,7 +116,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -final
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
