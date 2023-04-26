@@ -877,10 +877,13 @@ class PlayState extends MusicBeatState
 	{
 		totalPlayed += 1;
 		songAccuracy = totalNotesHit / totalPlayed * 100;
+   if (songMisses == 0)
+   {
 		if (songAccuracy >= 100){
 			songAccuracy = 100;
-		}	
-	}	
+		}
+   }
+	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
 	{
