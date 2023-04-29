@@ -56,8 +56,8 @@ class TitleState extends MusicBeatState
 	var swagShader:ColorSwap;
 	var alphaShader:BuildingShaders;
 
-	var needUpdate:Bool = false;
-	public static var newVersion:String = '';
+	/*var needUpdate:Bool = false;
+	public static var newVersion:String = '';*/
 
 	override public function create():Void
 	{
@@ -86,7 +86,7 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 		Highscore.load();
 
-			trace('checking for update');
+			/*trace('checking for update');
 			var http = new haxe.Http("https://raw.githubusercontent.com/MaysLastPlay10/FNF-PlayEngine/main/gitVersion.txt");
 
 			http.onData = function (data:String)
@@ -104,7 +104,7 @@ class TitleState extends MusicBeatState
 				trace('error: $error');
 			}
 
-			http.request();
+			http.request();*/
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{
@@ -343,10 +343,8 @@ class TitleState extends MusicBeatState
 			// FlxG.sound.music.stop();
 
 			// Check if version is outdated
-			if needUpdate = true
+			if (!OutdatedSubState.leftState)
 			{
-				FlxG.switchState(new OutdatedSubState());
-			}else{
 				// TODO: Make a check here or delete this since no NGAPI
 				FlxG.switchState(new MainMenuState());
 			}
