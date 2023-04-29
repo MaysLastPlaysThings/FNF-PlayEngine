@@ -17,22 +17,26 @@ class OutdatedSubState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"HEY! You're running an outdated version of the game!\nCurrent version is v"
-			+ Application.current.meta.get('version')
+			"HEY! You're running an outdated version of Play Engine!\nCurrent version is v" + MainMenuState.EngineVer
 			+ " while the most recent version is "
-			+ "v0.2.8" // might use the GitHub API later to check the version based on NinjaMuffin99's latest tag since I tore out the NG API
-			+ "! Press Space to go to itch.io, or ESCAPE to ignore this!!",
+			+ TitleState.newVersion
+			+ "!\nPress Space to Update Engine, or ESCAPE to ignore this!!",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
 		add(txt);
+
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
+
 	}
 
 	override function update(elapsed:Float)
 	{
 		if (controls.ACCEPT)
 		{
-			FlxG.openURL("https://ninja-muffin24.itch.io/funkin");
+			FlxG.openURL("https://github.com/MaysLastPlay10/FNF-PlayEngine/releases");
 		}
 		if (controls.BACK)
 		{
