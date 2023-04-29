@@ -56,6 +56,9 @@ class TitleState extends MusicBeatState
 	var swagShader:ColorSwap;
 	var alphaShader:BuildingShaders;
 
+	var needUpdate:Bool = false;
+	public static var newVersion:String = '';
+
 	override public function create():Void
 	{
 		#if mobile
@@ -82,6 +85,26 @@ class TitleState extends MusicBeatState
 		PreferencesMenu.initPrefs();
 		PlayerSettings.init();
 		Highscore.load();
+
+			trace('checking for update');
+			var http = new haxe.Http("https://raw.githubusercontent.com/MaysLastPlay10/FNF-PlayEngine/main/gitVersion.txt");
+
+			http.onData = function (data:String)
+			{
+				newVersion = data.split('\n')[0].trim();
+				var curVersion:String = MainMenuState.EngineVer.trim();
+				trace('version online: ' + newVersion + ', your version: ' + curVersion);
+				if(newVersion != curVersion) {
+					trace('versions arent matching!');
+					needUpdate = true;
+				}
+			}
+
+			http.onError = function (error) {
+				trace('error: $error');
+			}
+
+			http.request();
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{
