@@ -343,8 +343,10 @@ class TitleState extends MusicBeatState
 			// FlxG.sound.music.stop();
 
 			// Check if version is outdated
-			if (!OutdatedSubState.leftState)
+			if needUpdate = true
 			{
+				FlxG.switchState(new OutdatedSubState());
+			}else{
 				// TODO: Make a check here or delete this since no NGAPI
 				FlxG.switchState(new MainMenuState());
 			}
