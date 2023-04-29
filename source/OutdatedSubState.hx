@@ -18,8 +18,7 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"HEY! You're running an outdated version of Play Engine!\nCurrent version is v" + MainMenuState.EngineVer
-			+ " while the most recent version is "
-			+ TitleState.newVersion
+			+ " while the most recent version is 0.2.8!"
 			+ "!\nPress Space to Update Engine, or ESCAPE to ignore this!!",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
