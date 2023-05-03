@@ -1,6 +1,9 @@
 ## FNF Play Engine
 ![Play Engine logo](logo.png)
-- Play Engine is FNF Engine what adds new features to original Friday Night Funkin' game.
+- Play Engine is FNF Engine what adds new features to original Friday Night Funkin' ganew
+# WARNING!!!
+- Play Engine is on very early development state! You can request new features though pull requests.
+- Please Tell If You Have ISSUES with engine so we'll fix it as fast as possible!
 ### Features
 - Updated HUD
 - New FPS Counter
