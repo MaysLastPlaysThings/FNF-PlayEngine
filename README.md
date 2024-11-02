@@ -1,6 +1,6 @@
 # WARNING! This engine is deprecated and will be rewriten soon.
 
-- Honestly, i don't like how it is, looking at it right now, it looks bad. So I'll try to rework it, so it'll look better than it is right now. Also, maybe it'll go under a new name. - MaysLastPlay. (2.11.2024)
+- Honestly, i don't like how it is, looking at it right now, it looks bad. I'll try to rework it, so it'll look better than it is right now. Also, maybe it'll go under a new name. - MaysLastPlay. (2.11.2024)
 
 
 
