@@ -1,3 +1,9 @@
+# WARNING! This engine is deprecated and will be rewriten soon.
+
+- Honestly, i don't like how it is, looking at it right now, it looks bad. So I'll try to rework it, so it'll look better than it is right now. Also, maybe it'll go under a new name. - MaysLastPlay. (2.11.2024)
+
+
+
 ## FNF Play Engine
 ![Play Engine logo](logo.png)
 - Play Engine is FNF Engine what adds new features to original Friday Night Funkin' game
